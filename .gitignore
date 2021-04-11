@@ -1,0 +1,9 @@
+### other
+.DS_Store
+
+### packer
+packer/development/packer_cache
+
+### vagrant
+vagrant/box/*.box
+vagrant/*/.vagrant

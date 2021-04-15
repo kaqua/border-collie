@@ -1,0 +1,11 @@
+---
+Env: development
+owner:
+  user: vagrant
+  group: vagrant
+homeDirectory: /home/vagrant
+apache:
+  applicationTimeOut: 300
+  documentRoot: /vagrant/www/htdocs
+  user: vagrant
+  group: vagrant

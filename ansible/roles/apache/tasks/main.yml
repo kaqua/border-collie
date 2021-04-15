@@ -1,0 +1,16 @@
+---
+- name: install apache
+  yum:
+    name: httpd
+- name: enable service httpd and start
+  systemd:
+    name: httpd
+    enabled: yes
+- name: set httpd.conf
+  template:
+    src: "{{ httpd_conf.src }}"
+    dest: "{{ httpd_conf.dest }}"
+    owner: "{{ owner.user }}"
+    group: "{{ owner.group }}"
+    mode: 0644
+    backup: yes

@@ -1,0 +1,2 @@
+[development]
+ansible_connection=local

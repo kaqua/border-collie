@@ -1,8 +1,11 @@
 ### other
 .DS_Store
+.vscode
+*.code-workspace
+json_schemas
 
 ### packer
-packer/development/packer_cache
+packer/dev/packer_cache
 
 ### vagrant
 vagrant/box/*.box

@@ -1,0 +1,51 @@
+{
+  "variables": {
+    },
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "vm_name": "{{user `vm_name`}}",
+      "guest_os_type": "RedHat_64",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "http_directory": "{{user `http_directory`}}",
+      "boot_command": [
+        "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/{{user `kickstat_file`}} <enter>"
+      ],
+      "boot_wait": "10s",
+      "shutdown_command": "echo {{user `ssh_password`}} | sudo -S shutdown -h now",
+      "guest_additions_path": "/home/vagrant/VBoxGuestAdditions.iso",
+      "disk_size": "10240",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "2048"],
+        ["modifyvm", "{{.Name}}", "--cpus", "1"],
+        ["modifyvm", "{{.Name}}", "--paravirtprovider", "kvm"]
+      ],
+      "headless": true,
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_timeout": "600s"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "../../ansible",
+      "destination": "/tmp"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "../../ansible/site.yml",
+      "inventory_file": "../../ansible/inventories/{{user `environment`}}",
+      "staging_directory": "/tmp/ansible"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "vagrant",
+        "output": "{{user `output_directory`}}/{{user `vm_name`}}.box"
+      }
+    ]
+  ]
+}

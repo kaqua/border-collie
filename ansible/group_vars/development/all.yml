@@ -6,6 +6,6 @@ owner:
 homeDirectory: /home/vagrant
 apache:
   applicationTimeOut: 300
-  documentRoot: /vagrant/www/htdocs
+  documentRoot: /var/www/html/
   user: vagrant
   group: vagrant

@@ -1,6 +1,7 @@
-# This Repository
-This is a repository for publishing on Zenn.
+# このリポジトリについて
+Zennで公開するためのリポジトリです
+※リポジトリ名と内容は全く関係がありません
 
-Create a vagrant box using packer and ansible.
+## 内容
+Packer と Ansible を使って Vagrant Box を作成します
 
-By the way, this repository name has nothing to do with Border Collie.
